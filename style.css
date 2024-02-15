@@ -1,0 +1,371 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: consolas;
+}
+
+body {
+    background-color: var(--bg-color);
+}
+
+/* Vars */
+:root {
+    --font-size: 12pt;
+    --header-color: #22222e;
+    --bg-color: #272935;
+    --active-tab: white;
+    --text-color: white;
+    --menu-hamburguer-bg: #191a22;
+    --hover-element: #1e1e27;
+    --hover-element2: #16161d;
+}
+
+
+/* Header */
+header {
+    height: 50px;
+    background-color: var(--header-color);
+}
+
+.fa-play {
+    cursor: pointer;
+    padding: 17px;
+    font-size: 15px;
+    z-index: 8;
+    color: var(--text-color);
+}
+
+.fa-play:hover {
+    background-color: var(--hover-element);
+}
+
+/* Hamburguer menu */
+#menu {
+    display: none;
+}
+
+#menu:checked ~ #menu_hamburguer {
+    transform: translate(-100%);
+}
+
+#credits {
+    top: 100vh;
+    transform: translate(15px, calc(-100% - 10px));
+    font-weight: 400;
+    position: absolute;
+    color: rgba(255, 255, 255, 0.534);
+    font-family: 'Poppins', sans-serif;
+    font-size: 9pt;
+}
+
+.fa-bars {
+    left: 100%;
+    transform: translate(-100%);
+    transition: all 0.1s ease-out;
+    cursor: pointer;
+    color: var(--text-color);
+    font-size: 20px;
+    padding: 15px;
+    z-index: 7;
+    position: fixed;
+}
+
+#menu_hamburguer span {
+    font-weight: bold;
+    font-size: 16pt;
+    line-height: 50px;
+    padding-left: 2.5vh;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color);
+}
+
+#menu_hamburguer {
+    transition: all 0.135s ease-out;
+    left: 100%;
+    position: fixed;
+    max-width: 300px;
+    width: 70vw;
+    height: 100vh;
+    background-color: var(--menu-hamburguer-bg);
+    z-index: 5;
+}
+
+#menu_hamburguer ul {
+    list-style-type: none;
+}
+
+#menu_hamburguer ul li{
+    font-size: 11pt;
+    font-family: 'Poppins', sans-serif;
+    list-style-type: none;
+    color: var(--text-color);
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#menu_hamburguer ul li:hover {
+    background-color: var(--hover-element2);
+}
+
+/* Nav */
+nav {
+    line-height: 60px;
+}
+
+
+/* Editor */
+main {
+    height: calc(100vh - 50px);
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+#code {
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 50%;
+}
+
+.none {
+    display: none;
+}
+
+/* CodeMirror */
+.CodeMirror * {
+    font-family: 'Roboto Mono', monospace;
+    font-size: var(--font-size);
+}
+
+.CodeMirror {
+    box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.404);
+}
+
+#code small {
+    margin-left: 10px;
+    color: var(--text-color);
+}
+
+
+/* Preview */
+#preview {
+    box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.404);
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+    height: calc(100vh - 85px);
+    width: 50%;
+}
+
+#preview-window {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+}
+
+/* Tabs */
+
+#show_active {
+    position: absolute;
+    background-color: var(--active-tab);
+    z-index: 4;
+    top: 47px;
+    left: 0;
+    height: 3px;
+    width: 80px;
+    transition: all 0.1s ease-out;
+}
+
+nav div ul {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: nowrap;
+    position: absolute;
+    top: -5px;
+    left: 0;
+}
+
+.tab {
+    font-weight: bold;
+    transition: all 0.1s ease-out;
+    cursor: pointer;
+    width: 80px;
+    height: 55px;
+    text-align: center;
+    color: var(--text-color);
+}
+
+.tab:hover {
+    background-color: var(--hover-element);
+}
+
+.active {
+    background-color: var(--hover-element2);
+}
+
+/* Media-querys */
+@media (max-width: 1024px) {
+    main {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #code, #preview {
+        border-radius: 0;
+        width: 100vw;
+        margin: 0;
+    }
+
+    .CodeMirror {
+        box-shadow: none;
+    }
+
+    #preview-window {
+        border-radius: 0;
+    }
+
+    #preview {
+        height: calc(50vh - 42.5px);
+    }
+}
+
+@media (max-width: 350px) {
+    .tab {
+        width: 50px;
+    }
+    #show_active {
+        display: none;
+    }
+}
+
+/* Popup */
+.fa-times {
+    position: absolute;
+    color: white;
+    left: 100%;
+    padding: 10px;
+    transform: translate(-100%);
+    cursor: pointer;
+}
+
+#popup {
+    opacity: 0;
+    transition: all 0.1s ease-out;
+    visibility: hidden;
+    box-shadow: 1px 1px 15px;
+    border-radius: 5px;
+    background-color: var(--hover-element);
+    max-width: 340px;
+    width: 60vw;
+    min-width: 260px;
+    height: 20vh;
+    min-height: 150px;
+    max-height: 200px;
+    z-index: 5000;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#cfg:checked ~ #popup {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+#cfg {
+    display: none;
+}
+
+#popup header {
+    position: absolute;
+    background-color: var(--hover-element2);
+    width: 100%;
+    height: 40px;
+    border-radius: 5px 5px 0 0;
+}
+
+header span {
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    line-height: 40px;
+    font-size: 15px;
+    margin-left: 10px;
+}
+
+#content {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 10px;
+    height: 100%;
+    width: 100%;
+    z-index: 9;
+}
+
+/* Trocar de fonte */
+#sub_font {
+    height: 30px;
+    transition: all 0.2s;
+    cursor: pointer;
+    background-color: var(--bg-color);
+    border: 0;
+    outline: 0;
+    padding: 7px;
+    border-radius: 0 5px 5px 0;
+    margin-left: -10px;
+}
+
+#content span {
+    color: var(--text-color);
+    font-family: 'Poppins', sans-serif;
+}
+
+#sub_font:hover {
+    background-color: var(--text-color);
+}
+
+#sub_font:hover .fa-check {
+    color: var(--bg-color);
+}
+
+.fa-check {
+    transition: all 0.2s;
+    color: var(--text-color);
+}
+
+input {
+    height: 30px;
+    margin-left: 6px;
+    width: 60px;
+	background-color: var(--bg-color);
+    color: var(--text-color);
+    padding: 5px;
+    text-align: center;
+    border: 0;
+    outline: 0;
+    border-radius: 5px 0 0 5px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.c_cb {
+    transition: all 0.1s;
+    cursor: pointer;
+    background-color: var(--bg-color);
+    padding: 5px;
+    font-size: 10px;
+    border-radius: 50%;
+}
+
+.c_cb:hover {
+    background-color: var(--hover-element2);
+}

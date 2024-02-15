@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+    <title>easyCode</title>
+
+    <!-- CodeMirror Lib -->
+    <link rel="stylesheet" type="text/css" href="css/codemirror.css">
+	<script type="text/javascript" src="js/codemirror.js"></script>
+	<script  type="text/javascript" src="js/xml.js"></script>
+	<script  type="text/javascript" src="js/css.js"></script>
+	<script  type="text/javascript" src="js/javascript.js"></script>
+
+    <!-- CodeMirror Autocomplete -->
+    <script src="autocomplete/html-hint.js"></script>
+    <script src="autocomplete/css-hint.js"></script>
+    <script src="autocomplete/javascript-hint.js"></script>
+    <script src="autocomplete/show-hint.js"></script>
+    <link rel="stylesheet" href="autocomplete/show-hint.css">
+
+    <!-- CodeMirror Theme -->
+    <link rel="stylesheet" type="text/css" href="css/dracula.css">
+</head>
+<body>
+
+    <header>
+
+        <input type="checkbox" id="cfg">
+
+        <!-- popup -->
+        <div id="popup">
+
+            <header>
+                <span>Settings</span>
+                <label for="cfg"><i class="fas fa-times"></i></label>
+            </header>
+    
+            <div id="content">
+                <div>
+                    <span>Font size:</span>
+                    <input type="text" id="font_size">
+                    <button id="sub_font"><i class="fas fa-check"></i></button>
+                </div>
+            </div>
+    
+        </div>
+
+        <input type="checkbox" id="menu">
+        <label for="menu"><i class="fas fa-bars"></i></label>
+        <div id="menu_hamburguer">
+            <span><span style="font-weight: 400; font-size: 14pt;">easy</span>Code</span>
+            <ul>
+                <li id="save">Save as</li>
+                <label for="cfg"><li>Settings</li></label>
+            </ul>
+            <h2 id="credits">made by nukhes  v0.5.1 alpha</h2>
+        </div>
+        <nav>
+            <div id="tabs">
+                <hr id="show_active">
+                <ul>
+                    <li id="html" class="tab active">HTML</li>
+                    <li id="css" class="tab">CSS</li>
+                    <li id="js" class="tab">JS</li>
+                    <li><i class="fas fa-play" onclick="run()"></i></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div id="code">
+            <div id="content_html"><div id="htmlcode"></div></div>
+            <div id="content_css"><div id="csscode"></div></div>
+            <div id="content_js"><div id="jscode"></div></div>
+        </div>
+        <div id="preview">
+            <iframe id="preview-window" frameborder="0"></iframe>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
